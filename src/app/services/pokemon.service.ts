@@ -13,4 +13,8 @@ export class PokemonService {
   loadPokemons = async (offset? : number, limit? : number) => {
     return await this.http.get<Pokemon[]>(this.apiURL + `/getPokemons?offset=${offset ? offset : null}&limit=${limit ? limit : null}`).toPromise();
   }
+
+  loadMorePokemons(offset: number, limitSetter: number): Promise<Pokemon[] | undefined> {
+    return this.http.get<Pokemon[]>(this.apiURL + `/getPokemons?offset=${offset*limitSetter}&limit=${offset}`).toPromise();
+  }
 }

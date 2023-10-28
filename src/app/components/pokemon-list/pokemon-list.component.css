@@ -1,0 +1,136 @@
+.pokemon {
+    background-color: #446DF6;
+    border: 1px solid #1f316d;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 800px;
+    height: 400px;
+    font-family: 'consolas', monospace;
+}
+
+.pokemon h2 {
+    margin: 0px;
+    color: #fcfcfc;
+    text-shadow: 2px 2px #757575;
+}
+
+.pokemon h5 {
+    font-size: 16px;
+    margin-top: 0;
+    color: #fdd700;
+}
+
+.pokemon img {
+    display: block;
+    margin: 50px 80px 100px;
+    width: 400px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.pokemon img:hover {
+    transform: scale(1.2);
+}
+
+.pokemon .typesList{
+    display: flex;
+    flex-direction: column;
+}
+
+.pokemon .type {
+    background-color: var(--type-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    margin: 20px;
+    color: #ffffff;
+}
+  
+  .pokemon .normal {
+    --type-color: #A8A878;
+  }
+  
+  .pokemon .fighting {
+    --type-color: #C03028;
+  }
+  
+  .pokemon .flying {
+    --type-color: #A890F0;
+  }
+  
+  .pokemon .poison {
+    --type-color: #A040A0;
+  }
+  
+  .pokemon .ground {
+    --type-color: #E0C068;
+  }
+  
+  .pokemon .rock {
+    --type-color: #B8A038;
+  }
+  
+  .pokemon .bug {
+    --type-color: #A8B820;
+  }
+  
+  .pokemon .ghost {
+    --type-color: #705898;
+  }
+  
+  .pokemon .steel {
+    --type-color: #B8B8D0;
+  }
+  
+  .pokemon .fire {
+    --type-color: #F08030;
+  }
+  
+  .pokemon .water {
+    --type-color: #6890F0;
+  }
+  
+  .pokemon .grass {
+    --type-color: #78C850;
+  }
+  
+  .pokemon .electric {
+    --type-color: #F8D030;
+  }
+  
+  .pokemon .psychic {
+    --type-color: #F85888;
+  }
+  
+  .pokemon .ice {
+    --type-color: #98D8D8;
+  }
+  
+  .pokemon .dragon {
+    --type-color: #7038F8;
+  }
+  
+  .pokemon .dark {
+    --type-color: #705848;
+  }
+  
+  .pokemon .fairy {
+    --type-color: #EE99AC;
+  }
+  
+  .pokemon .unknown {
+    --type-color: #68A090;
+  }
+  
+  .pokemon .shadow {
+    --type-color: #A890F0;
+  }
+
+.pokemon + .pokemon {
+    margin-top: 20px;
+}

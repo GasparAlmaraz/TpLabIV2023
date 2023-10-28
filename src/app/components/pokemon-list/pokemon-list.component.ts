@@ -10,6 +10,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonListComponent {
 
   renderedPokemons : Pokemon[] | undefined;
+  updates = 0;
   constructor(private pokemonService : PokemonService) {}
 
   async ngOnInit() { 
@@ -19,6 +20,14 @@ export class PokemonListComponent {
       this.renderedPokemons = this.renderedPokemons ? [...this.renderedPokemons, ...loadedPokemons] : loadedPokemons;
     }
     console.log(this.renderedPokemons);
-    
+  }
+
+  loadMorePokemons() {
+    this.pokemonService.loadMorePokemons(20, (this.updates+1)).then((newPokemons) => {
+      if (newPokemons) {
+        this.renderedPokemons = (this.renderedPokemons as Pokemon[]).concat(newPokemons);
+      }
+      this.updates = this.updates + 1;
+    });
   }
 }

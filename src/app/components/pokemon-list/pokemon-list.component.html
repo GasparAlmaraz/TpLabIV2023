@@ -1,13 +1,18 @@
-<div *ngIf="renderedPokemons && renderedPokemons.length > 0">
+<div *ngIf="renderedPokemons && renderedPokemons.length > 0" class="pokemonList">
     <h1>Pokémon List</h1>
-    <ul>
-      <li *ngFor="let pokemon of renderedPokemons">
-        {{ pokemon.name }} - {{ pokemon.type }}
+    <br>
+    <div *ngFor="let pokemon of renderedPokemons" class="pokemon">
+        <h2>{{ pokemon.name }}</h2>
         <img [src]="pokemon.image" alt="Pokemon image">
-      </li>
-    </ul>
-  </div>
+        <div class="typesList">
+            <div *ngFor="let type of pokemon.type" class="type" [ngClass]="type">
+                <h2>{{ type.toUpperCase() }}</h2>
+            </div>
+        </div>
+    </div>
+    <button (click)="loadMorePokemons()">Cargar más</button>
+</div>
   
-  <div *ngIf="!renderedPokemons || renderedPokemons.length === 0">
+<div *ngIf="!renderedPokemons || renderedPokemons.length === 0">
     <p>No Pokémon data available.</p>
-  </div>
+</div>
