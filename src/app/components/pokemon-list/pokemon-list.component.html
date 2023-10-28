@@ -1,0 +1,13 @@
+<div *ngIf="renderedPokemons && renderedPokemons.length > 0">
+    <h1>Pokémon List</h1>
+    <ul>
+      <li *ngFor="let pokemon of renderedPokemons">
+        {{ pokemon.name }} - {{ pokemon.type }}
+        <img [src]="pokemon.image" alt="Pokemon image">
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="!renderedPokemons || renderedPokemons.length === 0">
+    <p>No Pokémon data available.</p>
+  </div>
