@@ -1,4 +1,14 @@
 .app-pokemon-list {
     background-color: darkgoldenrod;
     overflow: auto;
+    display: flex;
+    position: absolute;
+    top: 0%;
+    width: fit-content;
+}
+
+.app-pokemon-detail {
+    position: absolute;
+    top: 0%;
+    right: 0%;
 }
