@@ -8,15 +8,22 @@
     margin: 10px;
     padding: 10px;
     text-align: center;
-    width: 800px;
-    height: 400px;
+    width: 600px;
+    height: 350px;
     font-family: 'consolas', monospace;
+    position: relative;
 }
 
 .pokemon h2 {
     margin: 0px;
     color: #fcfcfc;
     text-shadow: 2px 2px #757575;
+}
+.pokemon .name {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  size: 150%;
 }
 
 .pokemon h5 {
@@ -26,10 +33,13 @@
 }
 
 .pokemon img {
-    display: block;
-    margin: 50px 80px 100px;
-    width: 400px;
-    transition: transform 0.25s ease-in-out;
+  position: absolute;
+  display: block;
+  margin: 50px;
+  width: 350px;
+  transition: transform 0.25s ease-in-out;
+  top: -20%;
+  left: 20%;
 }
 
 .pokemon img:hover {
@@ -46,9 +56,15 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    position: absolute;
     padding: 5px 10px;
     margin: 20px;
     color: #ffffff;
+    top: 30%;
+    right: 0px;
+}
+.type + .type{
+  margin-top: 100px;
 }
   
   .pokemon .normal {
