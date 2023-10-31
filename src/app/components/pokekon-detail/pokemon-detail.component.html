@@ -1,20 +1,21 @@
-<div *ngIf="pokemon != null && isLoaded" class="selected">
-    <h1>Pokemon: {{pokemon.name?.toUpperCase()}}</h1>
-    <h5>Id: {{pokemon.id}}</h5>
+<div *ngIf="pokemonDetails != null && isLoaded" class="selected">
+    <h1>Pokemon: {{pokemonDetails.name?.toUpperCase()}}</h1>
+    <h5>Id: {{pokemonDetails.id}}</h5>
     <br>
     <div>
-        <img [src]="pokemon.image" alt="Pokemon Image">
+        <img [src]="pokemonDetails.image" alt="PokemonDetailpokemonDetails Image">
         <div class="stats">
-            <h3>Base Experience: {{pokemon.baseExperience}}</h3>
-            <h3>Attack: {{pokemon.attack}}</h3>
-            <h3>Defense: {{pokemon.defense}}</h3>
-            <h3>Health: {{pokemon.hp}}</h3>
-            <h3>Speed: {{pokemon.speed}}</h3>
-            <h3>Height: {{pokemon.height}}</h3>
-            <h3>Weight: {{pokemon.weight}}</h3>
+            <h3>Base Experience: {{pokemonDetails.baseExperience}}</h3>
+            <h3>Attack: {{pokemonDetails.attack}}</h3>
+            <h3>Defense: {{pokemonDetails.defense}}</h3>
+            <h3>Health: {{pokemonDetails.hp}}</h3>
+            <h3>Speed: {{pokemonDetails.speed}}</h3>
+            <h3>Height: {{pokemonDetails.height}}</h3>
+            <h3>Weight: {{pokemonDetails.weight}}</h3>
         </div>
         <div class="typesList">
-            <div *ngFor="let type of pokemon.type" class="type" [ngClass]="type">
+            <h2>Types</h2>
+            <div *ngFor="let type of pokemonDetails.type" class="type" [ngClass]="type">
                 <h2>{{ type.toUpperCase() }}</h2>
             </div>
         </div>

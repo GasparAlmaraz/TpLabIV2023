@@ -1,2 +1,2 @@
-<div class="app-pokemon-list"></div>
-<div class="app-pokemon-detail"></div>
+<div class="app-pokemon-list" (selectPokemonEvent)="GetPokemon($event)"></div>
+<div class="app-pokemon-detail" [pokemon]="selectedPokemon"></div>

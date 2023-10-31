@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -11,6 +11,7 @@ export class PokemonListComponent {
 
   renderedPokemons : Pokemon[] | undefined;
   updates = 0;
+  @Output() selectPokemonEvent = new EventEmitter<Pokemon>();
   constructor(private pokemonService : PokemonService) {}
 
   async ngOnInit() { 
@@ -46,5 +47,9 @@ export class PokemonListComponent {
       console.log(this.updates);
       console.log(this.renderedPokemons);
     }
+  }
+
+  selectPokemon(pokemon : Pokemon){
+    this.selectPokemonEvent.emit(pokemon);
   }
 }

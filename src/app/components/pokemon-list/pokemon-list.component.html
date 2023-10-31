@@ -3,15 +3,12 @@
     <br>
     <div *ngFor="let pokemon of renderedPokemons" class="pokemon">
         <h2 class="name" *ngIf="pokemon.name != null">{{ pokemon.name.toUpperCase() }}</h2>
-        <img [src]="pokemon.image" alt="Pokemon image">
+        <img [src]="pokemon.image" alt="Pokemon image" (click)="selectPokemon(pokemon)">
         <div class="typesList">
             <div *ngFor="let type of pokemon.type" class="type" [ngClass]="type">
                 <h2>{{ type.toUpperCase() }}</h2>
             </div>
         </div>
-        <button type="button" class="btn btn-success" (click)="selectCar(car)">
-          Select
-        </button>
     </div>
     <button *ngIf="renderedPokemons.length < 151"(click)="loadMorePokemons()">Cargar más</button>
     <button *ngIf="updates > 0" (click)="erasePokemons()">Mostrar menos</button>

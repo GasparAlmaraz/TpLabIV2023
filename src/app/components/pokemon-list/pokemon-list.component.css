@@ -35,15 +35,15 @@
 .pokemon img {
   position: absolute;
   display: block;
-  margin: 50px;
   width: 350px;
   transition: transform 0.25s ease-in-out;
-  top: -20%;
+  top: 5%;
   left: 20%;
 }
 
 .pokemon img:hover {
-    transform: scale(1.2);
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .pokemon .typesList{

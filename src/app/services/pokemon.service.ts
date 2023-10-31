@@ -30,7 +30,7 @@ export class PokemonService {
     return Promise.resolve(emptyArray);
   }
 
-  loadPokemonDetail = async (pokemonId: number) => {
+  loadPokemonDetail = async (pokemonId: number | undefined) => {
     return await this.http.get<Pokemon>(this.apiURL + `/getPokemonById/${pokemonId}`).toPromise();
   }
 }

@@ -1,6 +1,5 @@
 .app-pokemon-list {
     background-color: darkgoldenrod;
-    overflow: auto;
     display: flex;
     position: absolute;
     top: 0%;
@@ -8,7 +7,7 @@
 }
 
 .app-pokemon-detail {
-    position: absolute;
+    position: fixed;
     top: 0%;
     right: 0%;
 }
