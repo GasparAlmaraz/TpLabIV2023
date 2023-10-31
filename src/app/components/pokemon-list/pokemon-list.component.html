@@ -9,11 +9,14 @@
                 <h2>{{ type.toUpperCase() }}</h2>
             </div>
         </div>
+        <button type="button" class="btn btn-success" (click)="selectCar(car)">
+          Select
+        </button>
     </div>
     <button *ngIf="renderedPokemons.length < 151"(click)="loadMorePokemons()">Cargar más</button>
     <button *ngIf="updates > 0" (click)="erasePokemons()">Mostrar menos</button>
 </div>
   
 <div *ngIf="!renderedPokemons || renderedPokemons.length === 0">
-    <p>No Pokémon data available.</p>
+    <p>No Pokémon available.</p>
 </div>
