@@ -3,11 +3,15 @@
     display: flex;
     position: absolute;
     top: 0%;
+    left: 10%;
     width: fit-content;
 }
 
 .app-pokemon-detail {
+    background-color: #446DF6;
+    border: 1px solid #1f316d;
+    border-radius: 5px;
     position: fixed;
     top: 0%;
-    right: 0%;
+    right: 10%;
 }

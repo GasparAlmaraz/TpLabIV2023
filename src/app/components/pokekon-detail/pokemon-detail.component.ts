@@ -19,8 +19,6 @@ export class PokemonDetailComponent {
   constructor(private pokemonService: PokemonService){}
 
   ngOnInit(){
-    console.log(this.pokemon);
-    
   }
   
 
