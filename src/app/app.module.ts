@@ -7,13 +7,15 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonDetailComponent } from './components/pokekon-detail/pokemon-detail.component';
 import { PokemonCatalogComponent } from './components/pokemon-catalog/pokemon-catalog.component';
+import { QuestionGameComponent } from './components/question-game/question-game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonListComponent,
     PokemonDetailComponent,
-    PokemonCatalogComponent
+    PokemonCatalogComponent,
+    QuestionGameComponent
   ],
   imports: [
     BrowserModule,
