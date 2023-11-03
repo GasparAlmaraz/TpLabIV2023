@@ -46,7 +46,7 @@ export class QuestionGameComponent {
 
   answerQuestion(){
     if (this.pokemon != undefined) {
-      var result = this.questionService.rewardPlayer(this.pokemon, this.onStreak, this.streak, this.responseInput);
+      var result = this.questionService.rewardPlayer(this.pokemon, this.onStreak, this.streak, this.responseInput.toLowerCase());
   
       if (result > 0) {
         this.success = true;
@@ -64,22 +64,14 @@ export class QuestionGameComponent {
         this.streak = 0;
         this.onStreak = false;
       }
-
-      console.log("Result " + result);
-      
-      console.log("Streak " + this.streak);
-      console.log("onStreak " + this.onStreak);
-      
-      
     }
-
-    console.log(this.coinService.getCoins());
     
 
     setTimeout(async () => {
       this.pokemon = await this.questionService.getRandomPokemon();
       this.showFailureMessage = false;
       this.showSuccessMessage = false;
+      this.responseInput = '';
     }, 5000);
   }
 }
