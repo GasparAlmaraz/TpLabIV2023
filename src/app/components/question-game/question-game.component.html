@@ -1,1 +1,16 @@
 <p>question-game works!</p>
+<div>
+    <h1>Who's that Pokemon?!</h1>
+    <input type="text" [(ngModel)]="responseInput" placeholder="Enter your answer">
+    <button (click)="answerQuestion()">Answer</button>
+    <div *ngIf="pokemon != null">
+        <img [src]="pokemon.image" alt="Pokemon Image">
+        <h2 *ngIf="showSuccessMessage" class="success">
+            Correct! It's {{pokemon.name}}!
+        </h2>
+        <h2 *ngIf="showFailureMessage" class="failure">
+            Oh, that's too bad! It's {{pokemon.name}}!
+        </h2>
+    </div>
+
+</div>

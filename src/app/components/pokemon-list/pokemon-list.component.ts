@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 
 @Component({
   selector: '.app-pokemon-list',

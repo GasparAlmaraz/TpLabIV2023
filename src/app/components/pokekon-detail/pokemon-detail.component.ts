@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 
 @Component({
   selector: '.app-pokemon-detail',
@@ -24,8 +24,10 @@ export class PokemonDetailComponent {
 
   ngOnChanges(changes : SimpleChanges) {
     if(changes['pokemon']) {
-      this.loadInformation();
-      this.isLoaded = true;
+      if(this.pokemon != undefined){
+        this.loadInformation();
+        this.isLoaded = true;
+      }
     }
   }
 

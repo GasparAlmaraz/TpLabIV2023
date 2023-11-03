@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from '../models/pokemon';
+import { Pokemon } from '../../models/pokemon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoinService {
 
-  private wallet : number | undefined;
+  private wallet : number = 0;
 
   constructor() { }
 
@@ -44,4 +44,6 @@ export class CoinService {
   removeCoins(pay : number){
   if(this.wallet != undefined) this.wallet -= pay;
   }
+
+  getCoins() { return this.wallet }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
-import { CoinService } from 'src/app/services/coin.service';
-import { QuestionGameService } from 'src/app/services/question-game.service';
+import { CoinService } from 'src/app/services/coin/coin.service';
+import { QuestionGameService } from 'src/app/services/question-game/question-game.service';
 
 @Component({
   selector: 'app-question-game',
@@ -11,14 +11,20 @@ import { QuestionGameService } from 'src/app/services/question-game.service';
 export class QuestionGameComponent {
 
   pokemon : Pokemon | undefined;
-  reward = 1;
+  reward = 0;
   onStreak = false;
   streak = 0;
   success = false;
 
-  responseInput = "";
+  showSuccessMessage: boolean = false;
+  showFailureMessage: boolean = false;
 
-  constructor(private coinService : CoinService, private questionService : QuestionGameService){}
+  responseInput : string = '';
+
+  constructor(
+    private coinService : CoinService,
+    private questionService : QuestionGameService
+    ){}
 
   async prepareCuestion(){
     this.pokemon =  await this.questionService.getRandomPokemon();
@@ -31,18 +37,49 @@ export class QuestionGameComponent {
 
   ngOnChange(changes : SimpleChanges){
     if(changes['streak']){
-      setTimeout(() => this.prepareCuestion(), 7000);
+      if(this.streak > 0){
+        setTimeout(() => this.prepareCuestion(), 5000);
+        this.responseInput = '';
+      }
     }
   }
 
-  anwserQuestion(){
-    if(this.pokemon != undefined){
+  answerQuestion(){
+    if (this.pokemon != undefined) {
       var result = this.questionService.rewardPlayer(this.pokemon, this.onStreak, this.streak, this.responseInput);
-
-      if(result> 0){
+  
+      if (result > 0) {
         this.success = true;
+        this.reward = result;
         this.coinService.addCoins(result);
+        this.showSuccessMessage = true;
+        this.showFailureMessage = false;
+        this.streak = this.streak + 1;
+        this.onStreak = true;
+      } else {
+        this.success = false;
+        this.reward = result;
+        this.showSuccessMessage = false;
+        this.showFailureMessage = true;
+        this.streak = 0;
+        this.onStreak = false;
       }
+
+      console.log("Result " + result);
+      
+      console.log("Streak " + this.streak);
+      console.log("onStreak " + this.onStreak);
+      
+      
     }
+
+    console.log(this.coinService.getCoins());
+    
+
+    setTimeout(async () => {
+      this.pokemon = await this.questionService.getRandomPokemon();
+      this.showFailureMessage = false;
+      this.showSuccessMessage = false;
+    }, 5000);
   }
 }

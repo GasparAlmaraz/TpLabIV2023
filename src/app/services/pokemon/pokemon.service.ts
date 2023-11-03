@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from '../models/pokemon';
+import { Pokemon } from '../../models/pokemon';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
