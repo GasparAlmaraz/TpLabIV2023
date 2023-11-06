@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Pokemon } from 'src/app/models/pokemon';
+import { Pokemon } from 'src/app/models/pokemon/pokemon';
 import { CoinService } from 'src/app/services/coin/coin.service';
 import { QuestionGameService } from 'src/app/services/question-game/question-game.service';
 

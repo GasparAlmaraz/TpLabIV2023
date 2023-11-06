@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PokemonListComponent } from '../pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from '../pokekon-detail/pokemon-detail.component';
-import { Pokemon } from 'src/app/models/pokemon';
+import { Pokemon } from 'src/app/models/pokemon/pokemon';
 
 @Component({
   selector: 'app-pokemon-catalog',
