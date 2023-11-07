@@ -64,4 +64,19 @@ export class UserService {
       callback(false, `The file does not exist: ${error}`);
     })
   }
+
+  login(userLogin: User, callback: (success: boolean, message: string) => void){
+    const filePath = `../../data/${userLogin.username}.json`;
+
+    access(filePath)
+    .then(() => {
+      console.log("Success login in.");
+      this.currentUser = userLogin;
+      callback(true, `Welcome ${userLogin.username}.`);
+    })
+    .catch(error => {
+      console.log(error);
+      callback(false, `This user does not exist. Try register first.`);
+    })
+  }
 }
