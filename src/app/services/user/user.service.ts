@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -9,7 +9,8 @@ import { User } from 'src/app/models/user/user';
 })
 export class UserService {
 
-  currentUser: User | undefined;
+  private currentUser: User | undefined;
+  private errorMessage: string | undefined;
 
   constructor(private http: HttpClient) { }
 
@@ -21,16 +22,27 @@ export class UserService {
     newUser.ownedPokemonIds = new Array<number>();
     
     let jsonData = JSON.stringify(newUser);
-    const result = this.http.post(`http://localhost:3001/postUser`, jsonData);
+    console.log("Json: " + jsonData);
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
 
-    return result;
+    return this.http.post<User>(`http://localhost:3001/postUser`, jsonData, httpOptions);
   }
 
   updateUserFile(userToUpdate: User){
-    return this.http.put(`http://localhost:3001/updateUser`, userToUpdate);
+    return this.http.put<User>(`http://localhost:3001/updateUser`, userToUpdate);
   }
 
   login(userLogin: User){
-    
+    return this.http.get<User>(`http://localhost:3001/getUser?username=${userLogin.username}&password=${userLogin.password}`);
   }
+
+  get CurrentUser() { return this.currentUser }
+  get Message() { return this.errorMessage }
+  set CurrentUser(user: User | undefined) { this.currentUser = user }
+  set Message(errorMessage: string | undefined) { this.errorMessage = errorMessage }
 }

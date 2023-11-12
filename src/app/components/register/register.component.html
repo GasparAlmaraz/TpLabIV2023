@@ -1,12 +1,11 @@
-<div class="containerLogin">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="containerRegister">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <a [routerLink]="['/login']" routerLinkActive="active">Go back</a>
         <input type="email" formControlName="username" class="form-control">
         <input type="password" formControlName="password" class="form-control">
 
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
     </form>
-
-    <p>Don't have an account? <a routerLink="/register">Register</a></p>
 
     <div *ngIf="submitted && username?.invalid && (username?.dirty || username?.touched)" class="alert-danger">
         <div *ngIf="username?.errors?.['required']">Username is required</div>
@@ -17,5 +16,11 @@
         <div *ngIf="password?.errors?.['required']">Password is required</div>
         <div *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</div>
         <div *ngIf="password?.errors?.['maxlength']">Password cannot exceed 16 characters</div>
+    </div>
+
+    <div *ngIf="errorMessage != ''">{{errorMessage}}</div>
+
+    <div *ngIf="success">
+        <h2>User register was a success! Entering the app</h2>
     </div>
 </div>

@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class LoginComponent {
   loginUser: User = new User();
   loginForm!: FormGroup;
+  submitted = false;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -26,19 +27,32 @@ export class LoginComponent {
   get password() { return this.loginForm?.get('password') }
 
   onSubmit() {
-    this.loginUser.username = this.username?.value;
-    this.loginUser.password = this.password?.value;
+    this.submitted = true;
+  
+    if (this.loginForm.valid) {
+      this.loginUser.username = this.loginForm.get('username')?.value;
+      this.loginUser.password = this.loginForm.get('password')?.value;
+      console.log(this.loginUser);
 
-    this.userService.login(this.loginUser, (success, message) => {
+      this.userService.login(this.loginUser).subscribe({
+        next: (data) => { 
+          this.userService.CurrentUser = new User();
+          this.userService.CurrentUser = data;
+          
+          if (this.userService.CurrentUser != undefined) {
+            console.log(this.userService.CurrentUser);
+            this.router.navigate(['/catalog']);
+          }
+        },
+        error: (error) => { 
+          this.userService.Message = error;
+          console.log(this.userService.Message);
+          
+        },
+        complete: () => console.log("login completed"),
+      });
       
-      alert(message);
-      if(success){
-        
-        this.router.navigate(['catalog']);
-      }
-
-      this.loginUser.username = '';
-      this.loginUser.password = '';
-    })
+    }
+    
   }
 }

@@ -9,6 +9,8 @@ import { PokemonDetailComponent } from './components/pokekon-detail/pokemon-deta
 import { PokemonCatalogComponent } from './components/pokemon-catalog/pokemon-catalog.component';
 import { QuestionGameComponent } from './components/question-game/question-game.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { RouterModule, provideRouter } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,16 @@ import { LoginComponent } from './components/login/login.component';
     PokemonDetailComponent,
     PokemonCatalogComponent,
     QuestionGameComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
