@@ -11,6 +11,8 @@ import { QuestionGameComponent } from './components/question-game/question-game.
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, provideRouter } from '@angular/router';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RouterModule, provideRouter } from '@angular/router';
     PokemonCatalogComponent,
     QuestionGameComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavBarComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

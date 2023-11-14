@@ -1,0 +1,7 @@
+<p>nav-bar works!</p>
+<a [routerLink]="['/catalog']" routerLinkActive="active">Catalog</a>
+<a [routerLink]="['/question-game']" routerLinkActive="active">Question Game</a>
+<div *ngIf="loggedIn">
+    <a [routerLink]="[]" routerLinkActive="active">My Profile</a>
+    <button [routerLink]="['/login']" routerLinkActive="active" (click)="onClick()">Log out</button>
+</div>

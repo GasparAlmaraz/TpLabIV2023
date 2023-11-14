@@ -45,4 +45,9 @@ export class UserService {
   get Message() { return this.errorMessage }
   set CurrentUser(user: User | undefined) { this.currentUser = user }
   set Message(errorMessage: string | undefined) { this.errorMessage = errorMessage }
+
+  get CurrentWallet() { return this.currentUser?.wallet }
+  set CurrentWallet(value: number | undefined) { 
+    if(this.currentUser?.wallet != undefined) this.currentUser.wallet = value;
+  }
 }
