@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
+import { SessionService } from 'src/app/services/session/session.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class RegisterComponent {
   success = false;
   errorMessage = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private sessionService: SessionService) {}
 
   ngOnInit(): void{
     this.registerForm = new FormGroup({
@@ -44,6 +45,7 @@ export class RegisterComponent {
           if (this.userService.CurrentUser != undefined) {
             console.log(this.userService.CurrentUser);
             this.success = true;
+            this.sessionService.setLoggedIn(true);
             setTimeout(() => this.router.navigate(['/catalog']), 4000);
           }
         },

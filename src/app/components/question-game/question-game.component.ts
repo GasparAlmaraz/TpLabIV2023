@@ -50,6 +50,9 @@ export class QuestionGameComponent {
   answerQuestion(){
     if (this.pokemon != undefined) {
       var result = this.questionService.rewardPlayer(this.pokemon, this.onStreak, this.streak, this.responseInput.toLowerCase());
+
+      console.log(this.userService.CurrentUser);
+      
   
       if (result > 0) {
         this.success = true;
@@ -64,7 +67,7 @@ export class QuestionGameComponent {
           let updateUser = this.userService.CurrentUser;
           if(updateUser.wallet != undefined && updateUser.answeredQuestions != undefined){
             updateUser.wallet += this.reward;
-            updateUser.answeredQuestions += this.streak;
+            updateUser.answeredQuestions += 1;
             this.userService.updateUserFile(updateUser).subscribe({
               next: (data => {
                 this.userService.CurrentUser = data;
@@ -73,7 +76,7 @@ export class QuestionGameComponent {
           }
           else {
             updateUser.wallet = this.coinService.getCoins();
-            updateUser.answeredQuestions = this.streak;
+            updateUser.answeredQuestions = 1;
             this.userService.updateUserFile(updateUser).subscribe({
               next: (data => {
                 this.userService.CurrentUser = data;

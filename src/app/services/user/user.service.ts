@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 import { User } from 'src/app/models/user/user';
@@ -11,6 +12,8 @@ export class UserService {
 
   private currentUser: User | undefined;
   private errorMessage: string | undefined;
+  private currentUserSubject = new BehaviorSubject<User | undefined>(undefined);
+  currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -42,9 +45,15 @@ export class UserService {
     return this.http.get<User>(`http://localhost:3001/getUser?username=${userLogin.username}&password=${userLogin.password}`);
   }
 
-  get CurrentUser() { return this.currentUser }
+  set CurrentUser(user: User | undefined) {
+    this.currentUserSubject.next(user);
+  }
+
+  get CurrentUser(): User | undefined {
+    return this.currentUserSubject.value;
+  }
+
   get Message() { return this.errorMessage }
-  set CurrentUser(user: User | undefined) { this.currentUser = user }
   set Message(errorMessage: string | undefined) { this.errorMessage = errorMessage }
 
   get CurrentWallet() { return this.currentUser?.wallet }

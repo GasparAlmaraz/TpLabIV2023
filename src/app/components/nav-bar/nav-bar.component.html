@@ -1,9 +1,15 @@
 <div class="container">
     <a [routerLink]="['/catalog']" routerLinkActive="active">Catalog</a>
     <a [routerLink]="['/question-game']" routerLinkActive="active">Question Game</a>
-    <div *ngIf="loggedIn">
+    <div *ngIf="loggedIn" class="active">
         <a [routerLink]="['/myProfile']" routerLinkActive="active">My Profile</a>
         <button [routerLink]="['/login']" routerLinkActive="active" (click)="onClick()">Log Out</button>
+
+        <div class="profile">
+            <h5>Welcome {{username}}</h5>
+            <h5>Pokeballs: {{wallet}}</h5>
+            <img src="https://images.wikidexcdn.net/mwuploads/wikidex/6/6a/latest/20230115164405/Pok%C3%A9_Ball_EP.png" alt="PokeBall Image" class="pokeball">
+        </div>
     </div>
     <div *ngIf="!loggedIn">
         <button [routerLink]="['/login']" routerLinkActive="active">Log In</button>

@@ -27,4 +27,30 @@ a:active{
     font-family: 'consolas', monospace;
     font-size: 18px;
     padding: 5px;
+    height: 50px;
+}
+
+.active {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin: 5px;
+}
+
+h5{
+    margin: 5px;
+}
+
+.pokeball {
+    width: 50px;
 }
