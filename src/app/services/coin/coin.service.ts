@@ -33,8 +33,8 @@ export class CoinService {
     return 1;
   }
 
-  setWallet(currentCoins : number){
-    this.wallet = currentCoins;
+  setWallet(currentCoins : number | undefined){
+    if(currentCoins) this.wallet = currentCoins;
   }
 
   addCoins(reward : number){

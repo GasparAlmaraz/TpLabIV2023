@@ -10,15 +10,23 @@
     text-align: center;
     width: 600px;
     height: 350px;
-    font-family: 'consolas', monospace;
     position: relative;
 }
 
 .pokemon h2 {
-    margin: 0px;
+    margin: 1px;
     color: #fcfcfc;
     text-shadow: 2px 2px #757575;
+    font-family: 'consolas', monospace;
 }
+
+h1, p {
+    margin-left: 10px;
+    color: #fcfcfc;
+    text-shadow: 2px 2px #757575;
+    font-family: 'consolas', monospace;
+}
+
 .pokemon .name {
   position: absolute;
   top: 50%;

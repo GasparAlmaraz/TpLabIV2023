@@ -1,0 +1,30 @@
+a {
+    all: unset;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+a:hover{
+    cursor: pointer;
+    background-color: blue;
+}
+
+a:active{
+    background-color: chartreuse;
+}
+
+.container{
+    width: auto;
+    background-color: dimgrey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    color: #fcfcfc;
+    text-shadow: 2px 2px #757575;
+    font-family: 'consolas', monospace;
+    font-size: 18px;
+    padding: 5px;
+}

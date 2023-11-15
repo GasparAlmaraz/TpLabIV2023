@@ -1,7 +1,11 @@
-<p>nav-bar works!</p>
-<a [routerLink]="['/catalog']" routerLinkActive="active">Catalog</a>
-<a [routerLink]="['/question-game']" routerLinkActive="active">Question Game</a>
-<div *ngIf="loggedIn">
-    <a [routerLink]="[]" routerLinkActive="active">My Profile</a>
-    <button [routerLink]="['/login']" routerLinkActive="active" (click)="onClick()">Log out</button>
+<div class="container">
+    <a [routerLink]="['/catalog']" routerLinkActive="active">Catalog</a>
+    <a [routerLink]="['/question-game']" routerLinkActive="active">Question Game</a>
+    <div *ngIf="loggedIn">
+        <a [routerLink]="['/myProfile']" routerLinkActive="active">My Profile</a>
+        <button [routerLink]="['/login']" routerLinkActive="active" (click)="onClick()">Log Out</button>
+    </div>
+    <div *ngIf="!loggedIn">
+        <button [routerLink]="['/login']" routerLinkActive="active">Log In</button>
+    </div>
 </div>

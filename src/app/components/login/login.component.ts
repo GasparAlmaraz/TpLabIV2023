@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
+import { CoinService } from 'src/app/services/coin/coin.service';
+import { SessionService } from 'src/app/services/session/session.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -14,7 +16,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   submitted = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private sessionService: SessionService, private coinService: CoinService) {}
 
   ngOnInit(): void{
     this.loginForm = new FormGroup({
@@ -32,19 +34,26 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loginUser.username = this.loginForm.get('username')?.value;
       this.loginUser.password = this.loginForm.get('password')?.value;
-      console.log(this.loginUser);
 
       this.userService.login(this.loginUser).subscribe({
         next: (data) => { 
+
           this.userService.CurrentUser = new User();
           this.userService.CurrentUser = data;
+          console.log("User: " + this.userService.CurrentUser);
+          
           
           if (this.userService.CurrentUser != undefined) {
+
             console.log(this.userService.CurrentUser);
+            this.coinService.setWallet(this.userService.CurrentWallet);
+            this.sessionService.setLoggedIn(true);
             this.router.navigate(['/catalog']);
+
           }
         },
         error: (error) => { 
+
           this.userService.Message = error;
           console.log(this.userService.Message);
           

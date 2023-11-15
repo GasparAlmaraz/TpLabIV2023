@@ -20,6 +20,7 @@ export class UserService {
     newUser.password = createdUser.password;
     newUser.wallet = 0;
     newUser.ownedPokemonIds = new Array<number>();
+    newUser.answeredQuestions = 0;
     
     let jsonData = JSON.stringify(newUser);
     console.log("Json: " + jsonData);
@@ -50,4 +51,9 @@ export class UserService {
   set CurrentWallet(value: number | undefined) { 
     if(this.currentUser?.wallet != undefined) this.currentUser.wallet = value;
   }
+
+  get AnsweredQuestions() { return this.currentUser?.answeredQuestions }
+  set AnsweredQuestions(correctAnswer: number | undefined) { 
+    if(this.currentUser?.answeredQuestions != undefined) this.currentUser.answeredQuestions = correctAnswer;
+   }
 }

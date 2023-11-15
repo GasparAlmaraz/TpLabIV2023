@@ -20,9 +20,8 @@ h1, h3{
     margin: 5px;
 }
 .stats{
-    width: 99.5%;
-    height: 300px;
-    border: 1px solid #000;
+    width: 100%;
+    height: 290px;
     position: relative;
 }
 .typesList{

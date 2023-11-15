@@ -22,6 +22,8 @@ h1, h3{
     top: 15%;
     left: 25%;
     height: 700px;
+    border: 5px;
+    border-radius: 10px;
 }
 
 .title{
@@ -41,6 +43,7 @@ h1, h3{
     box-shadow: 2px 2px #757575;
     position: absolute;
     bottom: 2%;
+    left: 2%;
 }
   
 .failure {
@@ -52,6 +55,7 @@ h1, h3{
     box-shadow: 2px 2px #757575;
     position: absolute;
     bottom: 2%;
+    left: 2%;
 }
 
 .QA{
@@ -60,4 +64,10 @@ h1, h3{
     align-items: center;
     display: flex;
     flex-direction: column;
+}
+
+.streak{
+    position:absolute;
+    bottom: 1%;
+    right: 1%;
 }

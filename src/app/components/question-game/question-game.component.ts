@@ -1,7 +1,9 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon/pokemon';
+import { User } from 'src/app/models/user/user';
 import { CoinService } from 'src/app/services/coin/coin.service';
 import { QuestionGameService } from 'src/app/services/question-game/question-game.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-question-game',
@@ -23,7 +25,8 @@ export class QuestionGameComponent {
 
   constructor(
     private coinService : CoinService,
-    private questionService : QuestionGameService
+    private questionService : QuestionGameService,
+    private userService : UserService
     ){}
 
   async prepareCuestion(){
@@ -56,6 +59,28 @@ export class QuestionGameComponent {
         this.showFailureMessage = false;
         this.streak = this.streak + 1;
         this.onStreak = true;
+        
+        if(this.userService.CurrentUser != undefined) {
+          let updateUser = this.userService.CurrentUser;
+          if(updateUser.wallet != undefined && updateUser.answeredQuestions != undefined){
+            updateUser.wallet += this.reward;
+            updateUser.answeredQuestions += this.streak;
+            this.userService.updateUserFile(updateUser).subscribe({
+              next: (data => {
+                this.userService.CurrentUser = data;
+              })
+            });;
+          }
+          else {
+            updateUser.wallet = this.coinService.getCoins();
+            updateUser.answeredQuestions = this.streak;
+            this.userService.updateUserFile(updateUser).subscribe({
+              next: (data => {
+                this.userService.CurrentUser = data;
+              })
+            });
+          }
+        }
       } else {
         this.success = false;
         this.reward = result;

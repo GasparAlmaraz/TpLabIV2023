@@ -3,4 +3,5 @@ export class User {
     password: string = "";
     wallet: number | undefined;
     ownedPokemonIds: Array<number> | undefined;
+    answeredQuestions: number | undefined;
 }
