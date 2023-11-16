@@ -2,18 +2,26 @@
     <h1>Pokémon List</h1>
     <br>
     <div *ngFor="let pokemon of renderedPokemons" class="pokemon">
-        <h2 class="name" *ngIf="pokemon.name != null">{{ pokemon.name.toUpperCase() }}</h2>
-        <img [src]="pokemon.image" alt="Pokemon image" (click)="selectPokemon(pokemon)">
-        <div class="typesList">
-            <div *ngFor="let type of pokemon.type" class="type" [ngClass]="type">
-                <h2>{{ type.toUpperCase() }}</h2>
+        <div *ngIf="(loggedIn && IsAvailable(pokemon)) || !loggedIn || !inMyProfile">
+            <p class="id">Id: {{pokemon.id}}</p>
+            <h2 class="name" *ngIf="pokemon.name != null">{{ pokemon.name.toUpperCase() }}</h2>
+            <img [src]="pokemon.image" alt="Pokemon image" (click)="selectPokemon(pokemon)" class="image">
+            <div class="typesList">
+                <div *ngFor="let type of pokemon.type" class="type" [ngClass]="type">
+                    <h2>{{ type.toUpperCase() }}</h2>
+                </div>
             </div>
+        </div>
+        <div *ngIf="loggedIn && !IsAvailable(pokemon) && inMyProfile">
+            <p class="id">Id: {{pokemon.id}}</p>
+            <img src="https://images.wikidexcdn.net/mwuploads/wikidex/6/6a/latest/20230115164405/Pok%C3%A9_Ball_EP.png" alt="PokeBall Image" class="pokeball"/>
+            <h2>Pokemon not captured</h2>
         </div>
     </div>
     <button *ngIf="renderedPokemons.length < 151"(click)="loadMorePokemons()">Cargar más</button>
     <button *ngIf="updates > 0" (click)="erasePokemons()">Mostrar menos</button>
 </div>
-  
+
 <div *ngIf="!renderedPokemons || renderedPokemons.length === 0">
     <p>No Pokémon available.</p>
 </div>

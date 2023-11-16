@@ -27,6 +27,12 @@ h1, p {
     font-family: 'consolas', monospace;
 }
 
+.id {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+}
+
 .pokemon .name {
   position: absolute;
   top: 50%;
@@ -40,7 +46,7 @@ h1, p {
     color: #fdd700;
 }
 
-.pokemon img {
+.pokemon .image {
   position: absolute;
   display: block;
   width: 350px;
@@ -49,7 +55,7 @@ h1, p {
   left: 20%;
 }
 
-.pokemon img:hover {
+.pokemon .image:hover {
   cursor: pointer;
   transform: scale(1.2);
 }

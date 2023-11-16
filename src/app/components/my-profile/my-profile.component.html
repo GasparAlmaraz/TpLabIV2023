@@ -1,1 +1,11 @@
-<p>my-profile works!</p>
+<div class="container">
+    <div *ngIf="myData != undefined">
+        <h1>Username: {{myData.username}}</h1>
+        <h2>Total Pokemon adquired: {{myData.ownedPokemonIds?.length}}</h2>
+        <h2>Pokeballs: {{myData.wallet}}</h2>
+        <h3>Total correct answers: {{myData.answeredQuestions}}</h3>
+    </div>
+
+    <div class="app-pokemon-list" [inMyProfile]="true" (selectPokemonEvent)="GetPokemon($event)"></div>
+    <div class="app-pokemon-detail" [pokemon]="selectedPokemon"></div>
+</div>

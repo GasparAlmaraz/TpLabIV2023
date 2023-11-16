@@ -1,6 +1,9 @@
-import { Component, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon/pokemon';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
+import { SessionService } from 'src/app/services/session/session.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: '.app-pokemon-list',
@@ -11,16 +14,30 @@ export class PokemonListComponent {
 
   renderedPokemons : Pokemon[] | undefined;
   updates = 0;
+
+  loggedIn: boolean = false;
+  pokemonAvailable: number[] | undefined;
+
+  @Input() inMyProfile = false;
   @Output() selectPokemonEvent = new EventEmitter<Pokemon>();
-  constructor(private pokemonService : PokemonService) {}
+
+  
+  constructor(private pokemonService : PokemonService, private sessionService : SessionService, private userService: UserService) {}
 
   async ngOnInit() { 
+    this.sessionService.loggedIn$.subscribe((loggedIn) => {
+      this.loggedIn = loggedIn;
+    });
+
     const loadedPokemons = await this.pokemonService.loadPokemons(0, 25);
     
     if (loadedPokemons) {
       this.renderedPokemons = this.renderedPokemons ? [...this.renderedPokemons, ...loadedPokemons] : loadedPokemons;
     }
     console.log(this.renderedPokemons);
+    this.userService.currentUser$.subscribe((user) => {
+      this.pokemonAvailable = user?.ownedPokemonIds;
+    })
   }
 
   loadMorePokemons() {
@@ -51,5 +68,9 @@ export class PokemonListComponent {
 
   selectPokemon(pokemon : Pokemon){
     this.selectPokemonEvent.emit(pokemon);
+  }
+
+  IsAvailable(pokemon: Pokemon){
+    return this.pokemonAvailable && this.pokemonAvailable.includes(pokemon.id);
   }
 }

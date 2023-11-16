@@ -1,5 +1,5 @@
 export class Pokemon {
-    id : number | undefined;
+    id!: number;
     name : string | undefined;
     image : string | undefined;
     type : string | undefined;
