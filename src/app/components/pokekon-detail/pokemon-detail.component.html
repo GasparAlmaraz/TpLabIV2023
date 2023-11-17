@@ -1,9 +1,8 @@
 <div *ngIf="pokemonDetails != null && isLoaded" class="selected">
     <h1>Pokemon: {{pokemonDetails.name?.toUpperCase()}}</h1>
-    <h5>Id: {{pokemonDetails.id}}</h5>
     <br>
     <div>
-        <img [src]="pokemonDetails.image" alt="PokemonDetailpokemonDetails Image">
+        <img [src]="pokemonDetails.image" alt="PokemonDetailpokemonDetails Image" class="image">
         <div class="stats">
             <h3>Stats</h3>
             <h3>Base Experience: {{pokemonDetails.baseExperience}}</h3>

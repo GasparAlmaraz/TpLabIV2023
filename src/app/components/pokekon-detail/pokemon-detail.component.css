@@ -12,6 +12,11 @@ h1, h3{
     font-family: 'consolas', monospace;
 }
 
+.image{
+  width: 80%;
+  margin-left: 10%;
+}
+
 .close{
     display:inline;
     position: absolute;

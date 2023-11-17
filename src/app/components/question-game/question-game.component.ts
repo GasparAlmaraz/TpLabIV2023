@@ -12,7 +12,8 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class QuestionGameComponent {
 
-  pokemon : Pokemon | undefined;
+  pokemon : Pokemon[] | undefined;
+  selectedPokemon: Pokemon | undefined;
   reward = 0;
   onStreak = false;
   streak = 0;
@@ -21,17 +22,28 @@ export class QuestionGameComponent {
   showSuccessMessage: boolean = false;
   showFailureMessage: boolean = false;
 
-  responseInput : string = '';
-
   constructor(
     private coinService : CoinService,
     private questionService : QuestionGameService,
     private userService : UserService
     ){}
 
-  async prepareCuestion(){
-    this.pokemon =  await this.questionService.getRandomPokemon();
-    if(this.pokemon != undefined) this.reward = this.coinService.setPokemonValue(this.pokemon);
+  prepareCuestion(){
+    console.log(1);
+    
+    this.questionService.getRandomPokemons().subscribe((pokemons) => {
+      this.pokemon = pokemons;
+      console.log(pokemons);
+      
+      if(this.pokemon != undefined) {
+        const randomIndex = Math.floor(Math.random() * this.pokemon.length);
+        this.selectedPokemon = this.pokemon[randomIndex];
+  
+  
+        this.reward = this.coinService.setPokemonValue(this.selectedPokemon);
+      }
+    })
+    console.log(this.pokemon);
   }
 
   ngOnInit(){
@@ -42,14 +54,13 @@ export class QuestionGameComponent {
     if(changes['streak']){
       if(this.streak > 0){
         setTimeout(() => this.prepareCuestion(), 5000);
-        this.responseInput = '';
       }
     }
   }
 
-  answerQuestion(){
-    if (this.pokemon != undefined) {
-      var result = this.questionService.rewardPlayer(this.pokemon, this.onStreak, this.streak, this.responseInput.toLowerCase());
+  answerQuestion(response: string | undefined){
+    if (this.selectedPokemon != undefined) {
+      var result = this.questionService.rewardPlayer(this.selectedPokemon, this.onStreak, this.streak, response);
 
       console.log(this.userService.CurrentUser);
       
@@ -95,11 +106,10 @@ export class QuestionGameComponent {
     }
     
 
-    setTimeout(async () => {
-      this.pokemon = await this.questionService.getRandomPokemon();
+    setTimeout(() => {
+      this.prepareCuestion();
       this.showFailureMessage = false;
       this.showSuccessMessage = false;
-      this.responseInput = '';
     }, 5000);
   }
 }

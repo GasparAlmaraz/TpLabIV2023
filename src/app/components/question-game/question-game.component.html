@@ -1,14 +1,19 @@
 <div class="container">
     <h1 class="title">Who's that Pokemon?</h1>
-    <input type="text" [(ngModel)]="responseInput" placeholder="Enter your answer">
-    <button (click)="answerQuestion()">Answer</button>
-    <div *ngIf="pokemon != null" class="QA">
-        <img [src]="pokemon.image" [alt]="'Sorry, the image does not exists, it`s: ' + pokemon.name">
+    <div *ngIf="selectedPokemon != null" class="QA">
+        <img [src]="selectedPokemon.image" [alt]="'Sorry, the image does not exists, it`s: ' + selectedPokemon.name">
+        <div class="options">
+            <div *ngFor="let option of pokemon">
+                <label for="{{option?.name}}">
+                    <input type="radio" (click)="answerQuestion(option?.name)"> {{option?.name?.toUpperCase()}}
+                </label>
+            </div>
+        </div>
         <h2 *ngIf="showSuccessMessage" class="success">
-            Correct! It's {{pokemon.name?.toUpperCase()}}!
+            Correct! It's {{selectedPokemon.name?.toUpperCase()}}!
         </h2>
-        <h2 *ngIf="showFailureMessage" class="failure">
-            Oh, that's too bad! It's {{pokemon.name?.toUpperCase()}}!
+        <h2  class="failure">
+            Oh, that's too bad! It's {{selectedPokemon.name?.toUpperCase()}}!
         </h2>
     </div>
     <h2 class="streak" *ngIf="onStreak && streak > 1">On a streak! Streak: {{streak}}</h2>

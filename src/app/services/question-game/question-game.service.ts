@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../../models/pokemon/pokemon';
+import { Observable, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,24 @@ export class QuestionGameService {
   private apiURL = "http://localhost:3001";
   constructor(private http : HttpClient) { }
 
-  async getRandomPokemon(){
-    let result = await this.http.get<Pokemon>(
-      this.apiURL + `/getPokemonById/${Math.floor(Math.random() * (1000 - 152) + 152)}`)
-      .toPromise();
+  getRandomPokemons(){
+    console.log(2);
+    
+    const requests: Observable<Pokemon>[] = [];
 
-    return result;
+    for (let i = 0; i < 4; i++) {
+      const request = this.http.get<Pokemon>(
+        this.apiURL + `/getPokemonById/${Math.floor(Math.random() * (1000 - 152) + 152)}`
+      );
+
+      requests.push(request);
+    }
+    console.log(3);
+    
+    return forkJoin(requests);
   }
 
-  rewardPlayer(pokemon: Pokemon, onStreak: boolean, streak: number, response: string){
+  rewardPlayer(pokemon: Pokemon, onStreak: boolean, streak: number, response: string | undefined){
     if(pokemon?.name != undefined && response == pokemon.name){
       if(onStreak){
         switch (true) {
