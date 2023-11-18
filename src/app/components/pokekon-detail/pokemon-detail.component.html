@@ -2,22 +2,43 @@
     <h1>Pokemon: {{pokemonDetails.name?.toUpperCase()}}</h1>
     <br>
     <img [src]="pokemonDetails.image" alt="PokemonDetailpokemonDetails Image" class="image">
-        <div class="stats">
-            <h3>Stats</h3>
-            <h3>Base Experience: {{pokemonDetails.baseExperience}}</h3>
-            <h3>Attack: {{pokemonDetails.attack}}</h3>
-            <h3>Defense: {{pokemonDetails.defense}}</h3>
-            <h3>Health: {{pokemonDetails.hp}}</h3>
-            <h3>Speed: {{pokemonDetails.speed}}</h3>
-            <h3>Height: {{pokemonDetails.height}}</h3>
-            <h3>Weight: {{pokemonDetails.weight}}</h3>
+    <div class="stats">
+        <h3>Stats</h3>
+        <h3>Base Experience: {{pokemonDetails.baseExperience}}</h3>
+        <h3>Attack: {{pokemonDetails.attack}}</h3>
+        <h3>Defense: {{pokemonDetails.defense}}</h3>
+        <h3>Health: {{pokemonDetails.hp}}</h3>
+        <h3>Speed: {{pokemonDetails.speed}}</h3>
+        <h3>Height: {{pokemonDetails.height}}</h3>
+        <h3>Weight: {{pokemonDetails.weight}}</h3>
 
-            <div class="typesList">
-                <h2 class="types">Types</h2>
-                <div *ngFor="let type of pokemonDetails.type" class="type" [ngClass]="type">
-                    <h2 [className]="type">{{ type.toUpperCase() }}</h2>
-                </div>
+        <div class="typesList">
+            <h2 class="types">Types</h2>
+            <div *ngFor="let type of pokemonDetails.type" class="type" [ngClass]="type">
+                <h2 [className]="type">{{ type.toUpperCase() }}</h2>
             </div>
         </div>
+    </div>
+    <div *ngIf='message != ""' class="message">
+        {{message}}
+    </div>
+    <div class="costs">
+        <div *ngIf="inMyProfile">
+            <div class="release">
+                <h3>Cost: {{pokemonValue}}</h3>
+                <button *ngIf="isLogged" class="sell" (click)="releasePokemon(pokemonDetails)">
+                    Release pokemon
+                </button>
+            </div>
+        </div>
+        <div *ngIf="!inMyProfile">
+            <div class="capture">
+                <h3>Cost: {{pokemonValue}}</h3>
+                <button *ngIf="isLogged" class="buy" (click)="capturePokemon(pokemonDetails)">
+                    Capture pokemon
+                </button>
+            </div>
+        </div>
+    </div>
     <button class="close" (click)="cleanInformation()">Close</button>
 </div>

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../../models/pokemon/pokemon';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoinService {
 
-  private wallet : number = 0;
+  private wallet = new BehaviorSubject<number>(0);
+  wallet$ = this.wallet.asObservable();
 
   constructor() { }
 
@@ -34,16 +36,15 @@ export class CoinService {
   }
 
   setWallet(currentCoins : number | undefined){
-    if(currentCoins) this.wallet = currentCoins;
+    if(currentCoins) this.wallet.next(currentCoins);
   }
 
   addCoins(reward : number){
-    if(this.wallet != undefined) this.wallet += reward;
+    if(this.wallet != undefined) this.wallet.next(this.wallet.value + reward);
+    return this.wallet;
   }
 
   removeCoins(pay : number){
-  if(this.wallet != undefined) this.wallet -= pay;
+  if(this.wallet != undefined) this.wallet.next(this.wallet.value - pay);
   }
-
-  getCoins() { return this.wallet }
 }

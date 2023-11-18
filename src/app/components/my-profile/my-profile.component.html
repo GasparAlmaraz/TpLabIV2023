@@ -7,5 +7,5 @@
     </div>
 
     <div class="app-pokemon-list" [inMyProfile]="true" (selectPokemonEvent)="GetPokemon($event)"></div>
-    <div class="app-pokemon-detail" [pokemon]="selectedPokemon"></div>
+    <div class="app-pokemon-detail" [inMyProfile]="true" [pokemon]="selectedPokemon"></div>
 </div>

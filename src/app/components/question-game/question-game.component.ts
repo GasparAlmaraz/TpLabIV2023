@@ -1,6 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon/pokemon';
-import { User } from 'src/app/models/user/user';
 import { CoinService } from 'src/app/services/coin/coin.service';
 import { QuestionGameService } from 'src/app/services/question-game/question-game.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -38,9 +37,6 @@ export class QuestionGameComponent {
       if(this.pokemon != undefined) {
         const randomIndex = Math.floor(Math.random() * this.pokemon.length);
         this.selectedPokemon = this.pokemon[randomIndex];
-  
-  
-        this.reward = this.coinService.setPokemonValue(this.selectedPokemon);
       }
     })
     console.log(this.pokemon);
@@ -86,13 +82,16 @@ export class QuestionGameComponent {
             });;
           }
           else {
-            updateUser.wallet = this.coinService.getCoins();
-            updateUser.answeredQuestions = 1;
-            this.userService.updateUserFile(updateUser).subscribe({
-              next: (data => {
-                this.userService.CurrentUser = data;
-              })
-            });
+            this.coinService.wallet$.subscribe(wallet => {
+              updateUser.wallet = wallet;
+              updateUser.answeredQuestions = 1;
+              
+              this.userService.updateUserFile(updateUser).subscribe({
+                next: (data => {
+                  this.userService.CurrentUser = data;
+                })
+              });
+            })
           }
         }
       } else {
