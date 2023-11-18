@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="title">Who's that Pokemon?</h1>
     <div *ngIf="selectedPokemon != null" class="QA">
-        <img [src]="selectedPokemon.image" [alt]="'Sorry, the image does not exists, it`s: ' + selectedPokemon.name">
+        <img [src]="selectedPokemon.image" [alt]="'Sorry, the image does not exists, it`s: ' + selectedPokemon.name" class="image">
         <div class="options">
             <div *ngFor="let option of pokemon">
                 <label for="{{option?.name}}">
@@ -12,7 +12,7 @@
         <h2 *ngIf="showSuccessMessage" class="success">
             Correct! It's {{selectedPokemon.name?.toUpperCase()}}!
         </h2>
-        <h2  class="failure">
+        <h2 *ngIf="showFailureMessage" class="failure">
             Oh, that's too bad! It's {{selectedPokemon.name?.toUpperCase()}}!
         </h2>
     </div>

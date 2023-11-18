@@ -1,8 +1,7 @@
 <div *ngIf="pokemonDetails != null && isLoaded" class="selected">
     <h1>Pokemon: {{pokemonDetails.name?.toUpperCase()}}</h1>
     <br>
-    <div>
-        <img [src]="pokemonDetails.image" alt="PokemonDetailpokemonDetails Image" class="image">
+    <img [src]="pokemonDetails.image" alt="PokemonDetailpokemonDetails Image" class="image">
         <div class="stats">
             <h3>Stats</h3>
             <h3>Base Experience: {{pokemonDetails.baseExperience}}</h3>
@@ -20,6 +19,5 @@
                 </div>
             </div>
         </div>
-    </div>
     <button class="close" (click)="cleanInformation()">Close</button>
 </div>

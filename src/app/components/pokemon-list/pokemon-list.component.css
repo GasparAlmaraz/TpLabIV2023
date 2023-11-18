@@ -1,16 +1,37 @@
+.pokemonList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px;
+}
+
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
 .pokemon {
-    background-color: #446DF6;
-    border: 1px solid #1f316d;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    width: 600px;
-    height: 350px;
-    position: relative;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #446DF6;
+  padding: 10px;
+  text-align: center;
+}
+
+.no-pokemon {
+  text-align: center;
+}
+
+button {
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: large;
+  font-weight: bold;
+  background-color: #78C850;
 }
 
 .pokemon h2 {
@@ -27,18 +48,12 @@ h1, p {
     font-family: 'consolas', monospace;
 }
 
-.id {
-  position: absolute;
-  top: 1%;
-  left: 1%;
-}
-
-.pokemon .name {
+/* .pokemon .name {
   position: absolute;
   top: 50%;
   left: 10px;
   size: 150%;
-}
+} */
 
 .pokemon h5 {
     font-size: 16px;
@@ -47,9 +62,7 @@ h1, p {
 }
 
 .pokemon .image {
-  position: absolute;
-  display: block;
-  width: 350px;
+  width: 50%;
   transition: transform 0.25s ease-in-out;
   top: 5%;
   left: 20%;
@@ -62,24 +75,26 @@ h1, p {
 
 .pokemon .typesList{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .pokemon .type {
     background-color: var(--type-color);
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    position: absolute;
+    flex-direction: row;
     padding: 5px 10px;
     margin: 20px;
     color: #ffffff;
     top: 30%;
     right: 0px;
+    width: fit-content;
+    align-self: center;
 }
-.type + .type{
+/* .type + .type{
   margin-top: 100px;
-}
+} */
   
   .pokemon .normal {
     --type-color: #A8A878;
@@ -160,7 +175,3 @@ h1, p {
   .pokemon .shadow {
     --type-color: #A890F0;
   }
-
-.pokemon + .pokemon {
-    margin-top: 20px;
-}
