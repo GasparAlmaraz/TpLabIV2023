@@ -1,9 +1,11 @@
 .app-pokemon-list {
-    background-color: darkgoldenrod;
+    background-color: #5b5b5b;
     width: fit-content;
     height: fit-content;
     border: 1px;
     border-radius: 5px;
+    border-style: groove;
+    margin: 10px;
 }
 
 .app-pokemon-detail {

@@ -28,6 +28,8 @@ a:active{
     font-size: 18px;
     padding: 5px;
     height: 50px;
+    border-radius: 5px;
+    position: sticky;
 }
 
 .active {
@@ -53,4 +55,14 @@ h5{
 
 .pokeball {
     width: 50px;
+}
+
+button{
+    padding: 10px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: dodgerblue;
+    color: antiquewhite;
+    cursor: pointer;
+    
 }

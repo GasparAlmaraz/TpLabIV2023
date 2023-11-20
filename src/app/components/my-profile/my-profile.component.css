@@ -1,8 +1,11 @@
 .app-pokemon-list {
-    background-color: darkgoldenrod;
+    background-color: #5b5b5b;
     width: fit-content;
+    height: fit-content;
     border: 1px;
     border-radius: 5px;
+    border-style: groove;
+    margin: 10px;
 }
 
 .app-pokemon-detail {
@@ -23,4 +26,9 @@ h1, h2, h3, p {
     color: #fcfcfc;
     text-shadow: 2px 2px #757575;
     font-family: 'consolas', monospace;
+}
+
+.user-stats{
+    display: flex;
+    align-items: baseline;
 }

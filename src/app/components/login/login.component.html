@@ -1,8 +1,16 @@
 <div class="containerLogin">
+    <h2>Log in</h2>
+    <img src="https://pokemon314.weebly.com/uploads/9/8/4/7/9847699/973538016.jpg?224" alt="Professor Oak">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <input type="email" formControlName="username" class="form-control">
-        <input type="password" formControlName="password" class="form-control">
-
+        <label>
+            Username: 
+            <input type="email" formControlName="username" class="form-control">
+        </label>
+        <label>
+            Password: 
+            <input type="password" formControlName="password" class="form-control">
+        </label>
+        <br>
         <button type="submit">Login</button>
     </form>
 

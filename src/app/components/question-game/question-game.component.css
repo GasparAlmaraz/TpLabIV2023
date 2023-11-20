@@ -11,20 +11,24 @@ h1, h3{
 }
 
 .container{
-    background-color: chocolate;
+    background-image: url(https://3fc4ed44-3fbc-419a-97a1-a29742511391.selcdn.net/coub_storage/coub/simple/cw_timeline_pic/0505d7aa1d7/6348a70a2ba5379719066/med_1587331793_image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: flex-start;
-    width: 50%;
+    width: 60%;
     top: 15%;
-    left: 25%;
-    border: 5px;
+    left: 20%;
+    border: 5px solid;
     border-radius: 10px;
     flex-direction: column;
     height: max-content;
     padding: 10px;
-    position: relative;
+    position: sticky;
+    margin: auto;
+    margin-top: 15px;
 }
 
 .title{
@@ -33,6 +37,7 @@ h1, h3{
     border: solid;
     border-radius: 10px;
     border-style: outset;
+    margin-left: auto;
 }
 
 .success {
@@ -76,17 +81,20 @@ h1, h3{
     text-shadow: 2px 2px #757575;
     font-family: 'consolas', monospace;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     margin-top: 10px;
     position: relative;
+    align-items: flex-end;
 }
 
-.option {
-    margin: 0 10px;  /* Añadir un pequeño margen entre las opciones */
+.option{
+    margin: 10px 0px;
 }
 
 .image{
-    width: 75%;
+    width: 50%;
     align-self: center;
+    position: absolute;
+    top: 0%;
+    left: 10%;
 }

@@ -1,0 +1,74 @@
+.containerLogin{
+    display: grid;
+    width: 35%;
+    height: 50%;
+    margin: auto;
+    padding: 100px;
+    border-radius: 10px;
+    border: 2px solid;
+    border-style: groove;
+    margin-top: 10px;
+    text-shadow: 1px 1px #757575;
+    font-family: 'consolas', monospace;
+    background-color: white;
+    position: sticky;
+}
+
+form{
+    display: grid;
+    justify-items: center;
+    margin: 15px;
+}
+
+label{
+    margin: 15px;
+    margin-right: 100px;
+}
+
+button{
+    padding: 5px 20px;
+    border-radius: 3px;
+    border-style: none;
+    background-color: dodgerblue;
+    color: antiquewhite;
+    margin: auto;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+a{
+    all: unset;
+    padding: 5px;
+    background-color: navy;
+    border-radius: 3px;
+    border-style: none;
+    color: antiquewhite;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+img{
+    margin: auto;
+    z-index: 0;
+    top: 15px;
+    right: 15px;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.alert-danger{
+    margin: auto;
+    padding: 15px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.alert-danger + .alert-danger{
+    margin-top: 15px;
+}

@@ -13,11 +13,11 @@ h1, h3{
 .selected {
   display: flex;
   justify-content: space-between;
-  background-color:#aaa50d; /* Ajusta el color de fondo según tus preferencias */
+  background-color:#52b441; /* Ajusta el color de fondo según tus preferencias */
   padding: 20px;
   margin: 60px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra para resaltar el modal */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3); /* Sombra para resaltar el modal */
   color: #fcfcfc;
   text-shadow: 2px 2px #757575ad;
   font-family: 'consolas', monospace;
@@ -67,7 +67,7 @@ h1, h3{
 }
 
 .message{
-  background-color: rgb(0, 193, 6);
+  background-color: rgb(231, 227, 0);
   border-radius: 5px;
   border: 2px white;
   font-size: medium;
@@ -76,6 +76,7 @@ h1, h3{
   display: flex;
   align-self: center;
   padding: 10px;
+  color: black;
 }
 
 .typesList {

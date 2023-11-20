@@ -3,7 +3,7 @@
     <div *ngIf="selectedPokemon != null" class="QA">
         <img [src]="selectedPokemon.image" [alt]="'Sorry, the image does not exists, it`s: ' + selectedPokemon.name" class="image">
         <div class="options">
-            <div *ngFor="let option of pokemon">
+            <div *ngFor="let option of pokemon" class="option">
                 <label for="{{option?.name}}">
                     <input type="radio" (click)="answerQuestion(option?.name)"> {{option?.name?.toUpperCase()}}
                 </label>
