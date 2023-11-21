@@ -41,6 +41,8 @@ export class PokemonDetailComponent {
     this.sessionService.loggedIn$.subscribe(loggedIn => {
       this.isLogged = loggedIn;
     })
+
+    this.message = '';
   }
 
   ngOnChanges(changes : SimpleChanges) {
@@ -59,6 +61,7 @@ export class PokemonDetailComponent {
   cleanInformation(){
     this.isLoaded = false;
     this.pokemonDetails = undefined;
+    this.message = '';
   }
 
   capturePokemon(pokemon: Pokemon) {
@@ -76,6 +79,6 @@ export class PokemonDetailComponent {
   }
 
   CleanMessage(){
-    setTimeout(() => this.message = "", 5000);
+    setTimeout(() => this.cleanInformation(), 5000);
   }
 }

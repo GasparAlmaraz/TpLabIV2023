@@ -43,7 +43,6 @@ export class RegisterComponent {
           this.userService.CurrentUser = data;
 
           if (this.userService.CurrentUser != undefined) {
-            console.log(this.userService.CurrentUser);
             this.success = true;
             this.sessionService.setLoggedIn(true);
             setTimeout(() => this.router.navigate(['/catalog']), 4000);

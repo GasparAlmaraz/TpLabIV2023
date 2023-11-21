@@ -42,8 +42,7 @@ export class LoginComponent {
           this.userService.CurrentUser = data;
           
           if (this.userService.CurrentUser != undefined) {
-
-            console.log(this.userService.CurrentUser);
+            
             this.coinService.setWallet(data.wallet);
             this.sessionService.setLoggedIn(true);
             this.router.navigate(['/catalog']);

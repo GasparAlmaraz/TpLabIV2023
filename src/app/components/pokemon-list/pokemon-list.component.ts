@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon/pokemon';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
@@ -22,7 +22,9 @@ export class PokemonListComponent {
   @Output() selectPokemonEvent = new EventEmitter<Pokemon>();
 
   
-  constructor(private pokemonService : PokemonService, private sessionService : SessionService, private userService: UserService) {}
+  constructor(private pokemonService : PokemonService, 
+    private sessionService : SessionService, 
+    private userService: UserService) {}
 
   async ngOnInit() { 
     this.sessionService.loggedIn$.subscribe((loggedIn) => {
@@ -34,10 +36,13 @@ export class PokemonListComponent {
     if (loadedPokemons) {
       this.renderedPokemons = this.renderedPokemons ? [...this.renderedPokemons, ...loadedPokemons] : loadedPokemons;
     }
-    console.log(this.renderedPokemons);
     this.userService.currentUser$.subscribe((user) => {
       this.pokemonAvailable = user?.ownedPokemonIds;
     })
+  }
+
+  async ngOnChanges(changes: SimpleChanges){
+    console.log(changes);
   }
 
   loadMorePokemons() {
@@ -46,8 +51,6 @@ export class PokemonListComponent {
         this.renderedPokemons = (this.renderedPokemons as Pokemon[]).concat(newPokemons);
       }
       this.updates = this.updates + 1;
-      console.log(this.updates);
-      console.log(this.renderedPokemons);
     });
   }
 
@@ -61,8 +64,6 @@ export class PokemonListComponent {
         this.updates = this.updates - 1;
       }
       this.updates = this.updates-1;
-      console.log(this.updates);
-      console.log(this.renderedPokemons);
     }
   }
 

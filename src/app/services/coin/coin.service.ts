@@ -40,8 +40,9 @@ export class CoinService {
   }
 
   addCoins(reward : number){
+    console.log("reward: " + reward);
     if(this.wallet != undefined) this.wallet.next(this.wallet.value + reward);
-    return this.wallet;
+    return this.wallet.value;
   }
 
   removeCoins(pay : number){

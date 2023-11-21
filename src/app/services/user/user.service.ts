@@ -38,6 +38,8 @@ export class UserService {
   }
 
   updateUserFile(userToUpdate: User){
+    console.log(userToUpdate);
+    
     return this.http.put<User>(`http://localhost:3001/updateUser`, userToUpdate);
   }
 
