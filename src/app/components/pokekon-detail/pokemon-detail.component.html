@@ -34,9 +34,16 @@
         <div *ngIf="!inMyProfile">
             <div class="capture">
                 <h3>Cost: {{pokemonValue}}</h3>
-                <button *ngIf="isLogged" class="buy" (click)="capturePokemon(pokemonDetails)">
+                <button 
+                *ngIf="isLogged && !currentUser?.ownedPokemonIds?.includes(pokemonDetails.id)" 
+                class="buy" 
+                (click)="capturePokemon(pokemonDetails)">
                     Capture pokemon
                 </button>
+                <h5 *ngIf="isLogged && currentUser?.ownedPokemonIds?.includes(pokemonDetails.id)">
+                    <br>
+                    You already have this pokemon.
+                </h5>
             </div>
         </div>
     </div>

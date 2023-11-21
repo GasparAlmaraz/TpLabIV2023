@@ -1,9 +1,11 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon/pokemon';
+import { User } from 'src/app/models/user/user';
 import { CoinService } from 'src/app/services/coin/coin.service';
 import { ExchangeService } from 'src/app/services/exchange/exchange.service';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 import { SessionService } from 'src/app/services/session/session.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: '.app-pokemon-detail',
@@ -23,6 +25,8 @@ export class PokemonDetailComponent {
 
   isLogged = false;
 
+  currentUser: User | undefined;
+
   get pokemonValue(): number | undefined {
     return this.pokemonDetails ? this.coinService.setPokemonValue(this.pokemonDetails) : undefined;
   }
@@ -30,7 +34,8 @@ export class PokemonDetailComponent {
   constructor(private pokemonService: PokemonService,
     private exchangeService: ExchangeService, 
     private coinService : CoinService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private userService: UserService
     ){}
 
   ngOnInit(){
@@ -40,6 +45,10 @@ export class PokemonDetailComponent {
 
     this.sessionService.loggedIn$.subscribe(loggedIn => {
       this.isLogged = loggedIn;
+    })
+
+    this.userService.currentUser$.subscribe(user => {
+      this.currentUser = user;
     })
 
     this.message = '';
