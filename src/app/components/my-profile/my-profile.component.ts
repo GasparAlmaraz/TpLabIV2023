@@ -13,8 +13,6 @@ import { UserService } from 'src/app/services/user/user.service';
 export class MyProfileComponent {
 
   myData: User | undefined;
-  myPokemons: number[] | undefined;
-  myPokeballs: number | undefined;
   updates = 0;
 
   selectedPokemon : Pokemon | undefined;
@@ -24,8 +22,6 @@ export class MyProfileComponent {
   ngOnInit(){
     this.userService.currentUser$.subscribe((user) => {
       this.myData = user;
-      this.myPokeballs = user?.wallet;
-      this.myPokemons = user?.ownedPokemonIds;
     })
   }
 

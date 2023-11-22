@@ -39,8 +39,7 @@ export class RegisterComponent {
       
       this.userService.generateUserFile(this.registerUser).subscribe({
         next: (data) => {
-          this.userService.CurrentUser = new User();
-          this.userService.CurrentUser = data;
+          this.userService.setCurrentUser(data);
 
           if (this.userService.CurrentUser != undefined) {
             this.success = true;

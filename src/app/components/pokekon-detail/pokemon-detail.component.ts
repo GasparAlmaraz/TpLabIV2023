@@ -56,6 +56,7 @@ export class PokemonDetailComponent {
 
   ngOnChanges(changes : SimpleChanges) {
     if(changes['pokemon']) {
+      this.cleanInformation();
       if(this.pokemon != undefined){
         this.loadInformation();
         this.isLoaded = true;

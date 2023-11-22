@@ -77,7 +77,7 @@ export class QuestionGameComponent {
             updateUser.answeredQuestions += 1;
             this.userService.updateUserFile(updateUser).subscribe({
               next: (data => {
-                this.userService.CurrentUser = data;
+                this.userService.setCurrentUser(data);
               })
             });;
           }
@@ -88,7 +88,7 @@ export class QuestionGameComponent {
               
               this.userService.updateUserFile(updateUser).subscribe({
                 next: (data => {
-                  this.userService.CurrentUser = data;
+                  this.userService.setCurrentUser(data);
                 })
               });
             })

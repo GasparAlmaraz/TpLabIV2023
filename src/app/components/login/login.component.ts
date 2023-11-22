@@ -37,9 +37,7 @@ export class LoginComponent {
 
       this.userService.login(this.loginUser).subscribe({
         next: (data) => { 
-
-          this.userService.CurrentUser = new User();
-          this.userService.CurrentUser = data;
+          this.userService.setCurrentUser(data);
           
           if (this.userService.CurrentUser != undefined) {
             

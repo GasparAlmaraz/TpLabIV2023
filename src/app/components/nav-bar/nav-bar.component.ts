@@ -32,7 +32,7 @@ export class NavBarComponent {
 
 
   onClick() {
-    this.userService.CurrentUser = undefined;
+    this.userService.setCurrentUser(undefined);
     this.sesionService.setLoggedIn(false);
     this.sesionService.loggedIn$.subscribe((loggedIn) => {
       this.loggedIn = loggedIn;

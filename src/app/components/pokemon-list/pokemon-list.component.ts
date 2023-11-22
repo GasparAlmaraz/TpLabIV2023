@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon/pokemon';
+import { User } from 'src/app/models/user/user';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 import { SessionService } from 'src/app/services/session/session.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -16,7 +17,7 @@ export class PokemonListComponent {
   updates = 0;
 
   loggedIn: boolean = false;
-  pokemonAvailable: number[] | undefined;
+  currentUser: User | undefined
 
   @Input() inMyProfile = false;
   @Output() selectPokemonEvent = new EventEmitter<Pokemon>();
@@ -38,7 +39,7 @@ export class PokemonListComponent {
     })
     
     this.userService.currentUser$.subscribe((user) => {
-      this.pokemonAvailable = user?.ownedPokemonIds;
+      this.currentUser = user;
     })
   }
 
@@ -69,6 +70,6 @@ export class PokemonListComponent {
   }
 
   IsAvailable(pokemon: Pokemon){
-    return this.pokemonAvailable && this.pokemonAvailable.includes(pokemon.id);
+    return this.currentUser?.ownedPokemonIds && this.currentUser.ownedPokemonIds.includes(pokemon.id);
   }
 }

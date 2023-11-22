@@ -31,4 +31,7 @@ h1, h2, h3, p {
 .user-stats{
     display: flex;
     align-items: baseline;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
 }

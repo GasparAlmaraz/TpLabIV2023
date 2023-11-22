@@ -45,7 +45,6 @@ export class ExchangeService {
     if (currentUser) {
       
       this.coinService.wallet$.pipe(
-        startWith(this.userService.CurrentWallet),
         take(1), // to ensure we only get the initial value
         switchMap(wallet => {
           
