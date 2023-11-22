@@ -2,7 +2,7 @@
     <h2>Register</h2>
     <img src="https://pokemon314.weebly.com/uploads/9/8/4/7/9847699/973538016.jpg?224" alt="Professor Oak">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <a [routerLink]="['/login']" routerLinkActive="active" class="return">Go back</a>
+        <a [routerLink]="['/login']" routerLinkActive="active" class="return">Go to Login</a>
         <label>
             Username: 
             <input type="email" formControlName="username" class="form-control">

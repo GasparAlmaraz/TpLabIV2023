@@ -26,16 +26,17 @@ export class PokemonListComponent {
     private sessionService : SessionService, 
     private userService: UserService) {}
 
-  async ngOnInit() { 
+  ngOnInit() { 
     this.sessionService.loggedIn$.subscribe((loggedIn) => {
       this.loggedIn = loggedIn;
     });
 
-    const loadedPokemons = await this.pokemonService.loadPokemons(0, 25);
+    this.pokemonService.loadPokemons(0, 25);
+
+    this.pokemonService.pokemon$.subscribe(pokemons => {
+      this.renderedPokemons = pokemons;
+    })
     
-    if (loadedPokemons) {
-      this.renderedPokemons = this.renderedPokemons ? [...this.renderedPokemons, ...loadedPokemons] : loadedPokemons;
-    }
     this.userService.currentUser$.subscribe((user) => {
       this.pokemonAvailable = user?.ownedPokemonIds;
     })
@@ -46,12 +47,8 @@ export class PokemonListComponent {
   }
 
   loadMorePokemons() {
-    this.pokemonService.loadMorePokemons(25, (this.updates+1)).then((newPokemons) => {
-      if (newPokemons) {
-        this.renderedPokemons = (this.renderedPokemons as Pokemon[]).concat(newPokemons);
-      }
-      this.updates = this.updates + 1;
-    });
+    this.pokemonService.loadMorePokemons(25, (this.updates+1));
+    this.updates = this.updates + 1;
   }
 
   erasePokemons() {

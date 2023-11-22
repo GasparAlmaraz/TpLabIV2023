@@ -63,8 +63,10 @@ export class PokemonDetailComponent {
     }
   }
 
-  async loadInformation() {
-    this.pokemonDetails = await this.pokemonService.loadPokemonDetail(this.pokemon?.id);
+  loadInformation() {
+    this.pokemonService.loadPokemonDetail(this.pokemon?.id).subscribe(result => {
+      this.pokemonDetails = result;
+    });
   }
 
   cleanInformation(){

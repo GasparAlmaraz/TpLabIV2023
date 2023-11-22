@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, provideRouter } from '@angular/router';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     LoginComponent,
     RegisterComponent,
     NavBarComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
