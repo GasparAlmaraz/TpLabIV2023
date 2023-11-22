@@ -60,9 +60,7 @@ export class ExchangeService {
           }
         })
       ).subscribe(user => {
-        if (user) {
-          console.log("**** "+user);
-          
+        if (user) {          
           this.message.next("Pokemon released!");
         }
       });

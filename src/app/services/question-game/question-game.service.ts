@@ -12,7 +12,6 @@ export class QuestionGameService {
   constructor(private http : HttpClient) { }
 
   getRandomPokemons(){
-    console.log(2);
     
     const requests: Observable<Pokemon>[] = [];
 
@@ -23,7 +22,6 @@ export class QuestionGameService {
 
       requests.push(request);
     }
-    console.log(3);
     
     return forkJoin(requests);
   }

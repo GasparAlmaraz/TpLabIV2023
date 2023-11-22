@@ -18,8 +18,8 @@
             </div>
         </div>
     </div>
-    <button *ngIf="renderedPokemons.length < 151"(click)="loadMorePokemons()">Cargar más</button>
-    <button *ngIf="updates > 0" (click)="erasePokemons()">Mostrar menos</button>
+    <button *ngIf="renderedPokemons.length < 151"(click)="loadMorePokemons()">Show more</button>
+    <button *ngIf="updates > 0" (click)="erasePokemons()">Show less</button>
 </div>
 
 <div *ngIf="!renderedPokemons || renderedPokemons.length === 0">

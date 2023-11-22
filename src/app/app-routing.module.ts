@@ -5,14 +5,16 @@ import { QuestionGameComponent } from './components/question-game/question-game.
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 const routes: Routes = [
   { path: 'catalog', component: PokemonCatalogComponent },
   { path: 'question-game', component: QuestionGameComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch:'full'},
+  { path: '', redirectTo: '/home', pathMatch:'full'},
   { path: 'register', component: RegisterComponent },
-  { path: 'myProfile', component: MyProfileComponent }
+  { path: 'myProfile', component: MyProfileComponent },
+  { path: 'home', component: LandingComponent}
 ];
 
 @NgModule({
