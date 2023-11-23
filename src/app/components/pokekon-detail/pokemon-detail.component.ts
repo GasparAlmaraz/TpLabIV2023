@@ -91,6 +91,6 @@ export class PokemonDetailComponent {
   }
 
   CleanMessage(){
-    setTimeout(() => this.cleanInformation(), 5000);
+    setTimeout(() => this.cleanInformation(), 2000);
   }
 }

@@ -26,6 +26,7 @@ export class ExchangeService {
             let currentUser = this.userService.CurrentUser;
     
             if (currentUser) {
+              currentUser.wallet = currentCoins - pokemonValue;
               currentUser?.ownedPokemonIds?.push(pokemonId);
               this.userService.updateUserFile(currentUser).subscribe((user) => {
                 if (user) {
