@@ -21,7 +21,7 @@ export class ExchangeService {
       this.coinService.wallet$
         .pipe(take(1))
         .subscribe(currentCoins => {
-          if (currentCoins > pokemonValue) {
+          if (currentCoins >= pokemonValue) {
             this.coinService.removeCoins(pokemonValue);
             let currentUser = this.userService.CurrentUser;
     

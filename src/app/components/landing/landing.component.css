@@ -13,11 +13,11 @@ a:hover{
 }
 
 h2, h3, h5 {
-    margin: 0px;
+    margin: 10px 0px;
     color: #fcfcfc;
     text-shadow: 2px 2px #757575;
     height: fit-content;
-    width: fit-content;
+    width: 60%;
 }
 
 h1{
